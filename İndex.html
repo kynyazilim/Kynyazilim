@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FiberZeka | By Embes</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#06070d;
+color:white;
+overflow-x:hidden;
+}
+
+/* ARKA PLAN */
+
+body::before{
+content:"";
+position:fixed;
+width:420px;
+height:420px;
+background:#00d9ff;
+filter:blur(150px);
+opacity:.12;
+top:-120px;
+left:-120px;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:420px;
+height:420px;
+background:#7200ff;
+filter:blur(150px);
+opacity:.10;
+bottom:-120px;
+right:-120px;
+z-index:-1;
+}
+
+/* AÇILIŞ */
+
+#loading{
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+background:#06070d;
+
+z-index:9999;
+
+transition:opacity .7s;
+}
+
+.loading-logo{
+font-size:42px;
+font-weight:bold;
+
+animation:pulse 1.5s infinite;
+}
+
+.loading-logo span{
+color:#00d9ff;
+}
+
+.loading-by{
+margin-top:12px;
+color:#777;
+letter-spacing:4px;
+font-size:12px;
+}
+
+@keyframes pulse{
+
+0%,100%{
+opacity:.5;
+transform:scale(.98);
+}
+
+50%{
+opacity:1;
+transform:scale(1.04);
+}
+
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:17px 25px;
+
+background:rgba(6,7,13,.78);
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+}
+
+.logo span{
+color:#00d9ff;
+text-shadow:0 0 20px #00d9ff;
+}
+
+nav{
+display:flex;
+align-items:center;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+
+margin-left:16px;
+
+font-size:14px;
+
+transition:.3s;
+}
+
+nav a:hover{
+color:#00d9ff;
+}
+
+/* HERO */
+
+.hero{
+min-height:75vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+padding:40px 20px;
+}
+
+.badge{
+padding:8px 16px;
+
+border:1px solid rgba(0,217,255,.4);
+
+border-radius:30px;
+
+color:#00d9ff;
+
+font-size:13px;
+
+margin-bottom:20px;
+
+background:rgba(0,217,255,.05);
+}
+
+.hero h1{
+font-size:clamp(48px,10vw,85px);
+
+margin-bottom:20px;
+
+animation:giris 1s ease;
+}
+
+.hero h1 span{
+color:#00d9ff;
+
+text-shadow:
+0 0 20px #00d9ff,
+0 0 50px rgba(0,217,255,.5);
+}
+
+.hero p{
+max-width:650px;
+
+color:#aaaaba;
+
+line-height:1.7;
+
+font-size:17px;
+
+margin-bottom:30px;
+}
+
+.button{
+display:inline-block;
+
+padding:15px 32px;
+
+background:#00d9ff;
+
+color:#061018;
+
+text-decoration:none;
+
+border-radius:30px;
+
+font-weight:bold;
+
+box-shadow:0 0 30px rgba(0,217,255,.3);
+
+transition:.3s;
+}
+
+.button:hover{
+transform:translateY(-4px) scale(1.05);
+
+box-shadow:
+0 0 20px #00d9ff,
+0 0 60px rgba(0,217,255,.4);
+}
+
+/* AI */
+
+.ai-section{
+max-width:850px;
+
+margin:40px auto 80px;
+
+padding:20px;
+}
+
+.ai-title{
+text-align:center;
+
+font-size:34px;
+
+margin-bottom:7px;
+}
+
+.ai-title span{
+color:#00d9ff;
+}
+
+.by-embes{
+text-align:center;
+
+font-size:12px;
+
+letter-spacing:5px;
+
+color:#777;
+
+margin-bottom:25px;
+
+animation:embesGlow 3s infinite;
+}
+
+@keyframes embesGlow{
+
+0%,100%{
+opacity:.5;
+}
+
+50%{
+opacity:1;
+text-shadow:0 0 15px rgba(0,217,255,.5);
+}
+
+}
+
+/* CHAT */
+
+.chat-box{
+height:520px;
+
+display:flex;
+flex-direction:column;
+
+background:rgba(15,16,25,.80);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.09);
+
+border-radius:24px;
+
+overflow:hidden;
+
+box-shadow:
+0 20px 70px rgba(0,0,0,.35);
+}
+
+.chat-header{
+padding:18px 20px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+}
+
+.ai-dot{
+width:12px;
+height:12px;
+
+background:#00d9ff;
+
+border-radius:50%;
+
+box-shadow:0 0 15px #00d9ff;
+}
+
+.chat-header strong{
+font-size:15px;
+}
+
+.chat-header small{
+color:#777;
+
+display:block;
+
+margin-top:3px;
+}
+
+.messages{
+flex:1;
+
+padding:20px;
+
+overflow-y:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+}
+
+.message{
+max-width:82%;
+
+padding:12px 15px;
+
+border-radius:16px;
+
+line-height:1.5;
+
+font-size:14px;
+
+animation:messageIn .3s ease;
+}
+
+@keyframes messageIn{
+
+from{
+opacity:0;
+transform:translateY(8px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.ai-message{
+align-self:flex-start;
+
+background:#171923;
+
+border:1px solid rgba(255,255,255,.06);
+}
+
+.user-message{
+align-self:flex-end;
+
+background:#00d9ff;
+
+color:#061018;
+}
+
+/* YAZIYOR */
+
+.typing{
+display:flex;
+
+gap:5px;
+
+align-items:center;
+}
+
+.typing span{
+width:6px;
+height:6px;
+
+background:#00d9ff;
+
+border-radius:50%;
+
+animation:typing 1s infinite;
+}
+
+.typing span:nth-child(2){
+animation-delay:.15s;
+}
+
+.typing span:nth-child(3){
+animation-delay:.3s;
+}
+
+@keyframes typing{
+
+0%,60%,100%{
+transform:translateY(0);
+opacity:.4;
+}
+
+30%{
+transform:translateY(-5px);
+opacity:1;
+}
+
+}
+
+/* CHAT ALT */
+
+.chat-input{
+display:flex;
+
+gap:10px;
+
+padding:12px;
+
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.chat-input input{
+flex:1;
+
+padding:14px;
+
+border-radius:12px;
+
+border:1px solid #292936;
+
+background:#0b0c13;
+
+color:white;
+
+outline:none;
+}
+
+.chat-input input:focus{
+border-color:#00d9ff;
+}
+
+.send-button{
+width:50px;
+
+border:0;
+
+border-radius:12px;
+
+background:#00d9ff;
+
+cursor:pointer;
+
+font-size:18px;
+
+transition:.3s;
+}
+
+.send-button:hover{
+transform:scale(1.05);
+}
+
+/* TEMİZLE */
+
+.clear-button{
+margin:10px auto 0;
+
+display:block;
+
+background:transparent;
+
+border:1px solid #292936;
+
+color:#777;
+
+padding:7px 14px;
+
+border-radius:20px;
+
+cursor:pointer;
+
+font-size:11px;
+
+transition:.3s;
+}
+
+.clear-button:hover{
+color:#00d9ff;
+
+border-color:#00d9ff;
+}
+
+/* HİZMETLER */
+
+.section-title{
+text-align:center;
+
+font-size:32px;
+
+margin-bottom:30px;
+}
+
+.section-title span{
+color:#00d9ff;
+}
+
+.cards{
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(230px,1fr));
+
+gap:22px;
+
+max-width:1100px;
+
+margin:auto;
+
+padding:20px;
+}
+
+.card{
+background:rgba(20,20,31,.65);
+
+backdrop-filter:blur(12px);
+
+padding:30px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+
+border-color:rgba(0,217,255,.5);
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.4);
+}
+
+.icon{
+font-size:35px;
+
+margin-bottom:15px;
+}
+
+.card h3{
+color:#00d9ff;
+
+margin-bottom:12px;
+}
+
+.card p{
+color:#aaaaba;
+
+line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+
+padding:40px 20px;
+
+margin-top:70px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+color:#777;
+}
+
+.footer-brand{
+color:#00d9ff;
+
+font-weight:bold;
+
+margin-top:8px;
+}
+
+/* ANİMASYON */
+
+@keyframes giris{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* MOBİL */
+
+@media(max-width:600px){
+
+header{
+padding:15px;
+}
+
+.logo{
+font-size:20px;
+}
+
+nav a{
+font-size:11px;
+margin-left:6px;
+}
+
+.hero{
+min-height:70vh;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.ai-section{
+padding:12px;
+}
+
+.chat-box{
+height:520px;
+}
+
+.message{
+max-width:88%;
+}
+
+.chat-input{
+padding:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AÇILIŞ -->
+
+<div id="loading">
+
+<div class="loading-logo">
+Fiber<span>Zeka</span>
+</div>
+
+<div class="loading-by">
+BY EMBES
+</div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+Fiber<span>Zeka</span>
+</div>
+
+<nav>
+
+<a href="#anasayfa">Ana Sayfa</a>
+
+<a href="#ai">AI</a>
+
+<a href="#hizmetler">Hizmetler</a>
+
+</nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="anasayfa">
+
+<div class="badge">
+⚡ FiberZeka AI aktif
+</div>
+
+<h1>
+Fiber<span>Zeka</span>
+</h1>
+
+<p>
+Yapay zekâ ve dijital teknolojileri
+tek bir platformda buluşturan yeni nesil sistem.
+</p>
+
+<a href="#ai" class="button">
+AI ile Konuş 🤖
+</a>
+
+</section>
+
+
+<!-- AI -->
+
+<section class="ai-section" id="ai">
+
+<h2 class="ai-title">
+Fiber<span>Zeka AI</span>
+</h2>
+
+<div class="by-embes">
+BY EMBES
+</div>
+
+
+<div class="chat-box">
+
+<div class="chat-header">
+
+<div class="ai-dot"></div>
+
+<div>
+
+<strong>FiberZeka Asistan</strong>
+
+<small>Çevrimiçi</small>
+
+</div>
+
+</div>
+
+
+<div class="messages" id="messages">
+
+<div class="message ai-message">
+
+Merhaba! 👋 Ben FiberZeka AI.
+
+<br><br>
+
+Size nasıl yardımcı olabilirim?
+
+</div>
+
+</div>
+
+
+<div class="chat-input">
+
+<input
+type="text"
+id="userInput"
+placeholder="Bir şeyler yaz..."
+autocomplete="off"
+>
+
+<button
+class="send-button"
+onclick="mesajGonder()">
+
+➤
+
+</button>
+
+</div>
+
+</div>
+
+
+<button
+class="clear-button"
+onclick="sohbetiTemizle()">
+
+🗑 Sohbeti Temizle
+
+</button>
+
+</section>
+
+
+<!-- HİZMETLER -->
+
+<section id="hizmetler">
+
+<h2 class="section-title">
+Neler <span>Yapıyoruz?</span>
+</h2>
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="icon">🤖</div>
+
+<h3>Yapay Zekâ</h3>
+
+<p>
+Akıllı ve modern yapay zekâ çözümleri.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌐</div>
+
+<h3>Web Tasarım</h3>
+
+<p>
+Modern, hızlı ve mobil uyumlu web siteleri.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚡</div>
+
+<h3>Dijital Çözümler</h3>
+
+<p>
+Günlük işleri kolaylaştıran dijital sistemler.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔐</div>
+
+<h3>Güvenlik</h3>
+
+<p>
+Modern ve güvenlik odaklı teknoloji altyapıları.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 FiberZeka
+
+<div class="footer-brand">
+By Embes
+</div>
+
+<br>
+
+Yeni nesil dijital dünyanın başlangıç noktası.
+
+</footer>
+
+
+<script>
+
+/* AÇILIŞ EKRANI */
+
+window.addEventListener("load",function(){
+
+setTimeout(function(){
+
+const loading =
+document.getElementById("loading");
+
+loading.style.opacity="0";
+
+setTimeout(function(){
+
+loading.style.display="none";
+
+},700);
+
+},1200);
+
+});
+
+
+/* ENTER */
+
+document
+.getElementById("userInput")
+.addEventListener("keydown",function(event){
+
+if(event.key==="Enter"){
+
+mesajGonder();
+
+}
+
+});
+
+
+/* AI CEVAPLARI */
+
+function cevapOlustur(text){
+
+const mesaj =
+text.toLowerCase();
+
+
+if(
+mesaj.includes("merhaba") ||
+mesaj.includes("selam")
+){
+
+return "Merhaba! 👋 FiberZeka'ya hoş geldin. Sana nasıl yardımcı olabilirim?";
+
+}
+
+
+if(
+mesaj.includes("kimsin") ||
+mesaj.includes("nesin")
+){
+
+return "Ben FiberZeka'nın yapay zekâ asistanıyım. 🤖 Şimdilik demo modunda çalışıyorum.";
+
+}
+
+
+if(
+mesaj.includes("web") ||
+mesaj.includes("site")
+){
+
+return "Web tasarım konusunda yardımcı olabilirim. 🌐 Modern, hızlı ve mobil uyumlu siteler oluşturabiliriz.";
+
+}
+
+
+if(
+mesaj.includes("embes")
+){
+
+return "By Embes ✨ FiberZeka'nın tasarım imzası.";
+
+}
+
+
+if(
+mesaj.includes("teşekkür") ||
+mesaj.includes("sağol")
+){
+
+return "Rica ederim kanka 😎 Her zaman buradayım.";
+
+}
+
+
+return "Mesajını aldım. 🤖 Demo FiberZeka AI olarak bunu anlayıp cevaplayacak şekilde hazırlanıyorum.";
+
+}
+
+
+/* MESAJ GÖNDER */
+
+function mesajGonder(){
+
+const input =
+document.getElementById("userInput");
+
+const messages =
+document.getElementById("messages");
+
+const text =
+input.value.trim();
+
+if(text===""){
+
+return;
+
+}
+
+
+/* KULLANICI */
+
+const userMessage =
+document.createElement("div");
+
+userMessage.className =
+"message user-message";
+
+userMessage.textContent =
+text;
+
+messages.appendChild(userMessage);
+
+input.value="";
+
+messages.scrollTop =
+messages.scrollHeight;
+
+
+/* YAZIYOR */
+
+const typing =
+document.createElement("div");
+
+typing.className =
+"message ai-message";
+
+typing.id="typing";
+
+typing.innerHTML=
+`
+<div class="typing">
+<span></span>
+<span></span>
+<span></span>
+</div>
+`;
+
+messages.appendChild(typing);
+
+messages.scrollTop =
+messages.scrollHeight;
+
+
+/* CEVAP */
+
+setTimeout(function(){
+
+typing.remove();
+
+const aiMessage =
+document.createElement("div");
+
+aiMessage.className =
+"message ai-message";
+
+aiMessage.textContent =
+cevapOlustur(text);
+
+messages.appendChild(aiMessage);
+
+messages.scrollTop =
+messages.scrollHeight;
+
+
+/* KAYDET */
+
+localStorage.setItem(
+"fiberzeka_chat",
+messages.innerHTML
+);
+
+},900);
+
+}
+
+
+/* SOHBETİ TEMİZLE */
+
+function sohbetiTemizle(){
+
+const messages =
+document.getElementById("messages");
+
+messages.innerHTML=
+`
+<div class="message ai-message">
+Merhaba! 👋 Ben FiberZeka AI.
+<br><br>
+Yeni bir sohbet başlattık.
+</div>
+`;
+
+localStorage.removeItem(
+"fiberzeka_chat"
+);
+
+}
+
+
+/* KAYITLI SOHBET */
+
+window.addEventListener("load",function(){
+
+const saved =
+localStorage.getItem("fiberzeka_chat");
+
+if(saved){
+
+document.getElementById(
+"messages"
+).innerHTML=saved;
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
